@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Object Prototypes | COMP1073 Client-Side JavaScript</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <section>
+
+        </section>
+        <footer>
+
+        </footer>
+        <script>
+            let header = document.querySelector('header');
+            let section = document.querySelector('section');
+            let requestURL = 'https://github.com/h835/lab8.git';
+            //create a XHR objects
+            let request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.responseType = 'json';
+            request.send();
+            request.onload = function() {
+                let iScreamInc = request.response;
+                console.log(iScreamInc);
+                populateHeader(iScreamInc);
+                topFlavours(iScreamInc);
+
+            }
+            function populateHeader(jsonObj) {
+             let headerH1 = document.createElement('h1');
+             headerH1.textContent = jsonObj['companyName'];
+             header.appendChild(headerH1);
+             let headerPara = document.createElement('p');
+             headerPara.textContent = json['headOffice'];
+             header.appendChild(headerPara);
+
+            }
+function topFlavour(jsonObj) {
+    let topFlavors = jsonObj ['topFlavours'];
+    for(let i = 0; i < topFlavours; i++) {
+      let article = document.createElement('article');
+       let h2 = document.createElement('h2');
+       let img = document.createElement('img');
+       let p1 = document.createElement('p');
+       let p2 = document.createElement('p');
+       let list = document.createElement('li');
+       img.setAttribute('src', 'image/' + topFlavors[i]['image'] );
+       image.setAttribute('alt', topFlavors[i].name );
+       h2.textContent = topFlavors[i].name;
+       p1.textContent = topFlavors[i].calories;
+       p2.textContent = topFlavors[i].type;
+       let ingredients = topFlavors[i].ingredients;
+       for(let j = 0; j < ingredients.length; j++) {
+           let listItem = documentLElement('li');
+           listItem.textContent = ingredients[j];
+           list.appendChild(listItem);
+       }
+       article.appendChild(img);
+       article.appendChild(h2);
+       article.appendChild(p1);
+       article.appendChild(p2);
+       article.appendChild(list);
+       article.appendChild(article);
+
+    }
+}
+
+        </script>
+    </body>
+</html>
